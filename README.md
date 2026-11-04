@@ -1,4 +1,4 @@
-<p align="center"><img src="s-power-logo-horizontal.png" width="320" alt="S-Power"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/josephkennedy93jk-dotcom/energy-company-ETL-calls-data-pipeline/main/s-power-logo-horizontal.png" width="320" alt="S-Power"></p>
 
 # Call Centre AI Data Pipeline
 
@@ -30,7 +30,7 @@ The weakest disclosure is the exit fee, given on 78.7% of calls.
 
 ## 3. The Pipeline
 
-![Pipeline](pipeline_C_hybrid.png)
+![Pipeline](https://raw.githubusercontent.com/josephkennedy93jk-dotcom/energy-company-ETL-calls-data-pipeline/main/pipeline_C_hybrid.png)
 
 | Stage | Script | What it does |
 | ----- | ------ | ------------ |
@@ -40,7 +40,7 @@ The weakest disclosure is the exit fee, given on 78.7% of calls.
 | Load | `03_load_callsdata_cloud.py` | Uploads raw, bronze and silver files to Cloud Storage |
 | Run all | `run_pipeline.py` | Runs the stages in order |
 
-![Pipeline run](pipeline_run_output.png)
+![Pipeline run](https://raw.githubusercontent.com/josephkennedy93jk-dotcom/energy-company-ETL-calls-data-pipeline/main/pipeline_run_output.png)
 
 **Data quality.** The cleaning step found two kinds of problem:
 - `C0199` appeared twice. The second file is `C0199_200.json`, so the ID was replaced from the filename.
@@ -54,7 +54,7 @@ All three actions are in `calls_cleaning_log.csv`. Result: 1,000 rows in, 1,000 
 - BigQuery datasets `silver_calls` and `crm_data`, both in the EU. The CRM data was first loaded into a US dataset by mistake and recreated in the EU so the tables could be joined.
 - Join check on `call_id` passed with 1,000 matching rows (`table join.sql`).
 
-![Schema](simple-schema-project.png)
+![Schema](https://raw.githubusercontent.com/josephkennedy93jk-dotcom/energy-company-ETL-calls-data-pipeline/main/simple-schema-project.png)
 
 ## 5. Power BI Dashboard
 
@@ -62,27 +62,27 @@ Built on the silver data with a custom S-Power theme. It is not connected to Big
 
 ### Sales performance
 
-![Sales dashboard](S-Power-sales%20performance-dash.png)
+![Sales dashboard](https://raw.githubusercontent.com/josephkennedy93jk-dotcom/energy-company-ETL-calls-data-pipeline/main/S-Power-sales%20performance-dash.png)
 
 **Agent revenue and conversion rate.** Order value won by each agent next to their conversion rate. Shows who sells the most and who converts best.
 
-![Agent revenue and conversion rate](Agent-Revenue-and-conversion-rate.png)
+![Agent revenue and conversion rate](https://raw.githubusercontent.com/josephkennedy93jk-dotcom/energy-company-ETL-calls-data-pipeline/main/Agent-Revenue-and-conversion-rate.png)
 
 **Agent metrics table.** Calls, sales, conversion and order value per agent in one place, for comparing agents.
 
-![Agent metrics table](Agent-metrics-table.png)
+![Agent metrics table](https://raw.githubusercontent.com/josephkennedy93jk-dotcom/energy-company-ETL-calls-data-pipeline/main/Agent-metrics-table.png)
 
 **Customer intent ratio.** What customers called about. Intent shapes the outcome of the call.
 
-![Customer intent ratio](Customer-Intent%20-Ratio.png)
+![Customer intent ratio](https://raw.githubusercontent.com/josephkennedy93jk-dotcom/energy-company-ETL-calls-data-pipeline/main/Customer-Intent%20-Ratio.png)
 
 **Value by campaign.** Total order value from each campaign. Shows which campaigns earn the most.
 
-![Value by campaign](value-generated-by-campaign.png)
+![Value by campaign](https://raw.githubusercontent.com/josephkennedy93jk-dotcom/energy-company-ETL-calls-data-pipeline/main/value-generated-by-campaign.png)
 
 ### Compliance and call quality
 
-![Compliance dashboard](S-Power-Quality-compliance-dash.png)
+![Compliance dashboard](https://raw.githubusercontent.com/josephkennedy93jk-dotcom/energy-company-ETL-calls-data-pipeline/main/S-Power-Quality-compliance-dash.png)
 
 - **Disclosure cards.** Share of calls where the exit fee (78.7%), cancellation rights (90.5%) and recording notice (90.9%) were given.
 - **Calls by number of misses.** 639 calls with no miss, 325 with one, 34 with two, 2 with three.
@@ -90,7 +90,7 @@ Built on the silver data with a custom S-Power theme. It is not connected to Big
 
 **Fully compliant calls by hour.** Compliance rate across the working day. Shows when agents are most likely to miss a disclosure.
 
-![Fully compliant calls by hour](fully-compliant-calls-hours-day.png)
+![Fully compliant calls by hour](https://raw.githubusercontent.com/josephkennedy93jk-dotcom/energy-company-ETL-calls-data-pipeline/main/fully-compliant-calls-hours-day.png)
 
 **Caveats.** Calls in this synthetic data last 15 to 59 seconds, much shorter than real calls. Sentiment looks like an outcome of the call, not a cause of the sale, so it is shown as "what a good call looks like".
 
