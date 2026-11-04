@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="S-Power mark: hills, a wind turbine and a power line">
+<defs><clipPath id="clipMark"><circle cx="100" cy="100" r="96"/></clipPath></defs>
+<circle cx="100" cy="100" r="96" fill="#16294A"/>
+<g clip-path="url(#clipMark)">
+<path d="M-10 138 C30 110 70 100 108 118 C140 132 170 124 210 108 L210 210 L-10 210 Z" fill="#2B6A4F"/>
+<g stroke="#F4F1EC" stroke-linecap="round" fill="none">
+<line x1="62" y1="112" x2="62" y2="54" stroke-width="3"/>
+<line x1="62" y1="52" x2="62" y2="26" stroke-width="3.5"/>
+<line x1="62" y1="52" x2="84.5" y2="65" stroke-width="3.5"/>
+<line x1="62" y1="52" x2="39.5" y2="65" stroke-width="3.5"/>
+</g>
+<circle cx="62" cy="52" r="4.5" fill="#F4F1EC"/>
+<path transform="translate(112 50) rotate(-22)" d="M0 0 C4 -7 13 -7 18 0 C13 7 4 7 0 0 Z" fill="#BFD8C8"/>
+<path transform="translate(142 74) rotate(28) scale(0.85)" d="M0 0 C4 -7 13 -7 18 0 C13 7 4 7 0 0 Z" fill="#F4F1EC"/>
+<path transform="translate(140 36) rotate(55) scale(0.7)" d="M0 0 C4 -7 13 -7 18 0 C13 7 4 7 0 0 Z" fill="#BFD8C8"/>
+<path d="M-10 160 C30 140 80 138 120 150 C150 158 180 150 210 140 L210 210 L-10 210 Z" fill="#C8641E"/>
+<g stroke="#F4F1EC" stroke-linecap="round" fill="none">
+<line x1="30" y1="149" x2="30" y2="126" stroke-width="3"/>
+<line x1="22" y1="132" x2="38" y2="132" stroke-width="3"/>
+<line x1="150" y1="155" x2="150" y2="112" stroke-width="3"/>
+<line x1="141" y1="119" x2="159" y2="119" stroke-width="3"/>
+<path d="M38 132 Q90 148 141 119" stroke-width="1.8"/>
+<path d="M159 119 Q180 124 205 136" stroke-width="1.8"/>
+<path d="M22 132 Q8 134 -5 140" stroke-width="1.8"/>
+</g>
+</g>
+</svg>
