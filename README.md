@@ -58,7 +58,7 @@ All three actions are in `calls_cleaning_log.csv`. Result: 1,000 rows in, 1,000 
 
 ## 5. Power BI Dashboard
 
-Built on the silver data with a custom S-Power theme. It is not connected to BigQuery because I don't have a Power BI Pro licence. The dashboard is the presentation layer. The pipeline is the main work.
+Built on the silver data with a custom S-Power theme. connection in production would be from BigQuery Gold table to BI software for semantic model design. 
 
 ### Sales performance
 
