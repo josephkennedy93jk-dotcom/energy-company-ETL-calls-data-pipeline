@@ -1,4 +1,4 @@
-<p align="center"><img src="images/s-power-logo-horizontal.png" width="320" alt="S-Power"></p>
+<p align="center"><img src="s-power-logo-horizontal.png" width="320" alt="S-Power"></p>
 
 # Call Centre AI Data Pipeline
 
@@ -14,7 +14,7 @@ S-Power is a fictional energy retailer made for this portfolio. It is not affili
 
 S-Power is rolling out a new call centre AI (CCAI) system in its telesales team. The system writes a JSON file for every call. The CRM holds the sales outcomes in a separate export. Nothing joined the two, and nothing checked either.
 
-This project builds the data layer that makes the CCAI output usable: collect it, clean it, join it to sales, and report on it.
+S-Power needs help using the data that comes out of the new system. This project builds that data layer: collect the CCAI output, clean it, join it to sales, and report on it.
 
 ## 2. Headline Results
 
@@ -30,7 +30,7 @@ The weakest disclosure is the exit fee, given on 78.7% of calls.
 
 ## 3. The Pipeline
 
-![Pipeline](images/pipeline_B_s_power.png)
+![Pipeline](pipeline_C_hybrid.png)
 
 | Stage | Script | What it does |
 | ----- | ------ | ------------ |
@@ -40,7 +40,7 @@ The weakest disclosure is the exit fee, given on 78.7% of calls.
 | Load | `03_load_callsdata_cloud.py` | Uploads raw, bronze and silver files to Cloud Storage |
 | Run all | `run_pipeline.py` | Runs the stages in order |
 
-![Pipeline run](images/pipeline_run_output.png)
+![Pipeline run](pipeline_run_output.png)
 
 **Data quality.** The cleaning step found two kinds of problem:
 - `C0199` appeared twice. The second file is `C0199_200.json`, so the ID was replaced from the filename.
@@ -52,9 +52,9 @@ All three actions are in `calls_cleaning_log.csv`. Result: 1,000 rows in, 1,000 
 
 - Bucket `calls_storage_energy` (EU, not public) holds `raw`, `bronze` and `silver` folders.
 - BigQuery datasets `silver_calls` and `crm_data`, both in the EU. The CRM data was first loaded into a US dataset by mistake and recreated in the EU so the tables could be joined.
-- Join check on `call_id` passed with 1,000 matching rows (`SQL Query/table join.sql`).
+- Join check on `call_id` passed with 1,000 matching rows (`table join.sql`).
 
-![Schema](images/simple-schema-project.png)
+![Schema](simple-schema-project.png)
 
 ## 5. Power BI Dashboard
 
@@ -62,24 +62,35 @@ Built on the silver data with a custom S-Power theme. It is not connected to Big
 
 ### Sales performance
 
-![Sales dashboard](images/S-Power-sales-performance-dash.png)
+![Sales dashboard](S-Power-sales%20performance-dash.png)
 
-| Visual | What it shows |
-| ------ | ------------- |
-| ![](images/Agent-Revenue-and-conversion-rate.png) | **Agent revenue and conversion rate.** Order value won by each agent next to their conversion rate. Shows who sells the most and who converts best. |
-| ![](images/Agent-metrics-table.png) | **Agent metrics table.** Calls, sales, conversion and order value per agent in one place, for comparing agents. |
-| ![](images/Customer-Intent-Ratio.png) | **Customer intent ratio.** What customers called about. Intent matters because it shapes the outcome of the call. |
-| ![](images/value-generated-by-campaign.png) | **Value by campaign.** Total order value from each campaign. Shows which campaigns earn the most. |
+**Agent revenue and conversion rate.** Order value won by each agent next to their conversion rate. Shows who sells the most and who converts best.
+
+![Agent revenue and conversion rate](Agent-Revenue-and-conversion-rate.png)
+
+**Agent metrics table.** Calls, sales, conversion and order value per agent in one place, for comparing agents.
+
+![Agent metrics table](Agent-metrics-table.png)
+
+**Customer intent ratio.** What customers called about. Intent shapes the outcome of the call.
+
+![Customer intent ratio](Customer-Intent%20-Ratio.png)
+
+**Value by campaign.** Total order value from each campaign. Shows which campaigns earn the most.
+
+![Value by campaign](value-generated-by-campaign.png)
 
 ### Compliance and call quality
 
-![Compliance dashboard](images/S-Power-Quality-compliance-dash.png)
+![Compliance dashboard](S-Power-Quality-compliance-dash.png)
 
-| Visual | What it shows |
-| ------ | ------------- |
-| Disclosure cards | Share of calls where the exit fee (78.7%), cancellation rights (90.5%) and recording notice (90.9%) were given |
-| Calls by number of misses | 639 calls with no miss, 325 with one, 34 with two, 2 with three |
-| ![](images/fully-compliant-calls-hours-day.png) | **Fully compliant calls by hour.** Compliance rate across the working day. Shows when agents are most likely to miss a disclosure. |
+- **Disclosure cards.** Share of calls where the exit fee (78.7%), cancellation rights (90.5%) and recording notice (90.9%) were given.
+- **Calls by number of misses.** 639 calls with no miss, 325 with one, 34 with two, 2 with three.
+- **Sales with a miss.** 93 of the 242 sales were made on a call where at least one disclosure was missed.
+
+**Fully compliant calls by hour.** Compliance rate across the working day. Shows when agents are most likely to miss a disclosure.
+
+![Fully compliant calls by hour](fully-compliant-calls-hours-day.png)
 
 **Caveats.** Calls in this synthetic data last 15 to 59 seconds, much shorter than real calls. Sentiment looks like an outcome of the call, not a cause of the sale, so it is shown as "what a good call looks like".
 
@@ -98,19 +109,18 @@ Built on the silver data with a custom S-Power theme. It is not connected to Big
 - **Event-driven loading** so a new call file in the bucket triggers the pipeline, instead of a manual run
 - **Real CCAI output** in place of synthetic data, with personal data kept out of the analytics layers
 
-## 7. Repository Structure
+## 7. Repository Contents
 
-```
-├── images/                     # Diagrams, dashboard screenshots, branding
-├── python Files/               # Pipeline scripts (00 to 03 plus run_pipeline.py)
-├── CSV FILES/                  # Bronze, silver, quarantine, cleaning log, CRM export
-├── JSON Raw Call Files/        # Raw call files (sample)
-├── SQL Query/                  # BigQuery join check
-├── calls sales dashboard.pbix  # Power BI report
-├── S-Power KPI Dash.pdf        # Dashboard export
-├── S-Power_DAX_measures.txt    # DAX measures used in the report
-└── README.md
-```
+| Item | Purpose |
+| ---- | ------- |
+| `python Files/` | Pipeline scripts (00 to 03 plus `run_pipeline.py`) |
+| `CSV FILES/` | Bronze, silver, quarantine, cleaning log and CRM export |
+| `JSON Raw Call Files/` | Raw call files (sample) |
+| `table join.sql` | BigQuery join check |
+| `calls sales dashboard.pbix` | Power BI report |
+| `S-Power KPI Dash.pdf` | Dashboard export |
+| `S-Power_DAX_measures.txt` | DAX measures used in the report |
+| `*.png`, `s-power-mark.svg` | Diagrams, dashboard screenshots and branding |
 
 ## 8. How to Reproduce
 
