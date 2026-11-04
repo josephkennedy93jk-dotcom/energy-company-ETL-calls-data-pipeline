@@ -1,0 +1,166 @@
+S-POWER CALL ANALYTICS - POWER BI DAX REFERENCE
+================================================
+Project: CCAI call analytics pipeline (fictional S-Power brand)
+Date written: 2026-11-03
+
+MODEL SETUP
+-----------
+Tables:
+  calls_silver : one row per call (1000 rows). Agent, campaign, start_time,
+                 duration, sentiment, the three compliance flags, etc.
+  crm_export   : call_id, disposition, product_sold, contract_months,
+                 order_value_gbp (1000 rows).
+Relationship: calls_silver[call_id] to crm_export[call_id],
+  one-to-one, cross-filter direction Both, active.
+Tip: keep all measures in a separate empty table (for example _measures)
+  so the Fields pane stays tidy.
+Status: these were written in chat. Check each one against the expected
+  value shown below. Your own measure names may differ (for example
+  "Total Sales" instead of "sales"); the logic is what matters.
+
+Compliance flags: cancellation_rights_read, exit_fee_disclosed and
+call_recording_notice_given must be True/False for the TRUE() tests to
+work. If they are text, change TRUE() to "True".
+A "miss" in this project means one of those three flags is False.
+
+
+-------------------------------------------------------
+1. SALES MEASURES
+-------------------------------------------------------
+
+total calls = COUNTROWS ( calls_silver )
+  What: number of calls (rows in calls_silver).
+  Expected: 1000.
+
+sales = CALCULATE ( COUNTROWS ( crm_export ), crm_export[disposition] = "sale" )
+  What: calls whose outcome was a sale.
+  Expected: 242.
+
+callbacks = CALCULATE ( COUNTROWS ( crm_export ), crm_export[disposition] = "callback" )
+  What: calls that ended with a callback booked (not lost yet).
+  Expected: 236 (23.6% of calls).
+
+conversion rate = DIVIDE ( [sales], [total calls] )
+  What: share of calls that became a sale. Format as a percentage.
+  Expected: 24.2%.
+
+total order value = SUM ( crm_export[order_value_gbp] )
+  What: total value of all sales in GBP.
+  Expected: 220,760.
+
+avg order value = AVERAGE ( crm_export[order_value_gbp] )
+  What: average value per sale (blank calls are ignored).
+  Expected: about 912. (12-month tariffs are 640, 24-month are 1,180.)
+
+
+-------------------------------------------------------
+2. CALL HANDLING MEASURE
+-------------------------------------------------------
+
+avg handle time (min) = DIVIDE ( AVERAGE ( calls_silver[duration_seconds] ), 60 )
+  What: average call length in minutes.
+  Expected: about 0.6 (36 seconds). Calls in this data are 15 to 59 seconds,
+  much shorter than real calls, so mention that in the write-up.
+
+
+-------------------------------------------------------
+3. COMPLIANCE MEASURES
+-------------------------------------------------------
+
+exit fee disclosed % =
+DIVIDE (
+    CALCULATE ( [total calls], calls_silver[exit_fee_disclosed] = TRUE () ),
+    [total calls]
+)
+  What: share of calls where the exit fee was disclosed.
+  Expected: 78.7%.
+
+cancellation rights read % =
+DIVIDE (
+    CALCULATE ( [total calls], calls_silver[cancellation_rights_read] = TRUE () ),
+    [total calls]
+)
+  What: share of calls where cancellation rights were read out.
+  Expected: 90.5%.
+
+recording notice given % =
+DIVIDE (
+    CALCULATE ( [total calls], calls_silver[call_recording_notice_given] = TRUE () ),
+    [total calls]
+)
+  What: share of calls where the recording notice was given.
+  Expected: 90.9%.
+
+fully compliant calls =
+CALCULATE (
+    [total calls],
+    calls_silver[cancellation_rights_read] = TRUE (),
+    calls_silver[exit_fee_disclosed] = TRUE (),
+    calls_silver[call_recording_notice_given] = TRUE ()
+)
+  What: calls where all three disclosures were made.
+  Expected: 639.
+
+fully compliant % = DIVIDE ( [fully compliant calls], [total calls] )
+  What: share of calls with no misses.
+  Expected: 63.9%.
+
+sales with a miss =
+[sales]
+    - CALCULATE (
+        [sales],
+        calls_silver[cancellation_rights_read] = TRUE (),
+        calls_silver[exit_fee_disclosed] = TRUE (),
+        calls_silver[call_recording_notice_given] = TRUE ()
+    )
+  What: sales made on calls where at least one disclosure was missed.
+  It is total sales minus sales on fully compliant calls.
+  Expected: 93 (of 242 sales).
+  Relies on the relationship being set to filter both ways.
+
+
+-------------------------------------------------------
+4. CUSTOMER EXPERIENCE MEASURE
+-------------------------------------------------------
+
+negative sentiment % =
+DIVIDE (
+    CALCULATE ( [total calls], calls_silver[overall_sentiment] = "negative" ),
+    [total calls]
+)
+  What: share of calls with negative overall sentiment.
+  Expected: 26.5% (265 calls).
+  Caution: sentiment looks like an outcome of the call (positive calls
+  converted at 86%), so present it as "what a good call looks like",
+  not as a cause of sales.
+
+
+-------------------------------------------------------
+5. CALCULATED COLUMNS (added to calls_silver, not measures)
+-------------------------------------------------------
+
+misses =
+IF ( calls_silver[cancellation_rights_read] = FALSE (), 1, 0 )
+    + IF ( calls_silver[exit_fee_disclosed] = FALSE (), 1, 0 )
+    + IF ( calls_silver[call_recording_notice_given] = FALSE (), 1, 0 )
+  What: number of disclosures missed on each call (0 to 3).
+  Expected counts: 0 misses = 639, 1 = 325, 2 = 34, 3 = 2.
+  Use: column chart of calls by number of misses.
+
+call hour = HOUR ( calls_silver[start_time] )
+  What: hour of the day each call started.
+  Caution: the CSV times carry a +00:00 offset. Power BI may shift summer
+  time calls (before 25 Oct) forward one hour, giving an 8am bucket of only
+  11 calls and a 20:00 bucket that is not in the file. In the raw file the
+  hours are 8 to 19 with about 80 calls each. If you show an hourly chart,
+  add a footnote: "Times shown in UK local time; the 8:00 hour has only 11
+  calls", or strip the time zone in Power Query.
+
+
+-------------------------------------------------------
+QUICK CHECK LIST
+-------------------------------------------------------
+Cards on a blank page should show:
+  total calls 1000 | sales 242 | conversion rate 24.2% |
+  total order value 220,760 | fully compliant % 63.9% |
+  sales with a miss 93 | negative sentiment % 26.5%
