@@ -8,6 +8,7 @@
 
 S-Power is a fictional energy retailer made for this portfolio. It is not affiliated with any real company, and the data is synthetic.
 
+See Project Overview Slide Deck:https://github.com/josephkennedy93jk-dotcom/energy-company-ETL-calls-data-pipeline/blob/main/Project%20Slide%20Deck/S-Power-CCAI-Data-Pipeline.pdf
 ---
 
 ## 1. The Business Case
