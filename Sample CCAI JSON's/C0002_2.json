@@ -1,0 +1,81 @@
+{
+  "call_id": "C0002",
+  "agent_id": "A01",
+  "campaign": "fixed_tariff_renewal",
+  "direction": "outbound",
+  "start_time": "2026-10-27T08:51:00Z",
+  "end_time": "2026-10-27T08:51:31Z",
+  "duration_seconds": 31,
+  "queue_wait_seconds": 0,
+  "transcription": {
+    "engine_confidence": 0.88,
+    "language": "en-GB",
+    "turns": [
+      {
+        "turn_no": 1,
+        "speaker": "agent",
+        "start_sec": 0.0,
+        "end_sec": 4.8,
+        "text": "Hello, this is A01 calling about your energy plan. Is now a good time?"
+      },
+      {
+        "turn_no": 2,
+        "speaker": "customer",
+        "start_sec": 5.3,
+        "end_sec": 8.0,
+        "text": "Yeah, go on."
+      },
+      {
+        "turn_no": 3,
+        "speaker": "agent",
+        "start_sec": 9.1,
+        "end_sec": 13.8,
+        "text": "Your current rate ends soon and I can offer a new fixed deal today."
+      },
+      {
+        "turn_no": 4,
+        "speaker": "customer",
+        "start_sec": 14.7,
+        "end_sec": 16.7,
+        "text": "I need to think about it."
+      },
+      {
+        "turn_no": 5,
+        "speaker": "agent",
+        "start_sec": 17.8,
+        "end_sec": 23.3,
+        "text": "On your usage, this would keep your unit rate close to what you pay now."
+      },
+      {
+        "turn_no": 6,
+        "speaker": "agent",
+        "start_sec": 23.8,
+        "end_sec": 28.7,
+        "text": "Before we go on, I need to read some important information."
+      },
+      {
+        "turn_no": 7,
+        "speaker": "customer",
+        "start_sec": 29.3,
+        "end_sec": 31.3,
+        "text": "I'll leave it for now."
+      }
+    ]
+  },
+  "ccai_analysis": {
+    "overall_sentiment": "neutral",
+    "sentiment_score": 0.1,
+    "topics": [
+      "need_to_think"
+    ],
+    "customer_intent": "unlikely_to_switch",
+    "compliance_checks": {
+      "cancellation_rights_read": true,
+      "exit_fee_disclosed": false,
+      "call_recording_notice_given": false
+    },
+    "talk_ratio_agent": 0.53,
+    "silence_seconds": 7.5,
+    "agent_assist_prompts_shown": 5
+  }
+}

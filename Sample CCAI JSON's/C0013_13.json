@@ -1,0 +1,81 @@
+{
+  "call_id": "C0013",
+  "agent_id": "A11",
+  "campaign": "new_customer_switch",
+  "direction": "outbound",
+  "start_time": "2026-10-15T15:28:00Z",
+  "end_time": "2026-10-15T15:28:36Z",
+  "duration_seconds": 36,
+  "queue_wait_seconds": 0,
+  "transcription": {
+    "engine_confidence": 0.87,
+    "language": "en-GB",
+    "turns": [
+      {
+        "turn_no": 1,
+        "speaker": "agent",
+        "start_sec": 0.0,
+        "end_sec": 6.4,
+        "text": "Hello, this is A11 calling about your energy plan. Is now a good time?"
+      },
+      {
+        "turn_no": 2,
+        "speaker": "customer",
+        "start_sec": 7.6,
+        "end_sec": 9.7,
+        "text": "Yeah, go on."
+      },
+      {
+        "turn_no": 3,
+        "speaker": "agent",
+        "start_sec": 10.6,
+        "end_sec": 15.2,
+        "text": "Your current rate ends soon and I can offer a new fixed deal today."
+      },
+      {
+        "turn_no": 4,
+        "speaker": "customer",
+        "start_sec": 16.1,
+        "end_sec": 18.7,
+        "text": "I need to think about it."
+      },
+      {
+        "turn_no": 5,
+        "speaker": "agent",
+        "start_sec": 19.0,
+        "end_sec": 26.0,
+        "text": "On your usage, this would keep your unit rate close to what you pay now."
+      },
+      {
+        "turn_no": 6,
+        "speaker": "agent",
+        "start_sec": 26.5,
+        "end_sec": 32.1,
+        "text": "Before we go on, I need to read some important information."
+      },
+      {
+        "turn_no": 7,
+        "speaker": "customer",
+        "start_sec": 32.6,
+        "end_sec": 35.8,
+        "text": "Okay, let's do it."
+      }
+    ]
+  },
+  "ccai_analysis": {
+    "overall_sentiment": "positive",
+    "sentiment_score": 0.51,
+    "topics": [
+      "need_to_think"
+    ],
+    "customer_intent": "likely_to_switch",
+    "compliance_checks": {
+      "cancellation_rights_read": true,
+      "exit_fee_disclosed": true,
+      "call_recording_notice_given": true
+    },
+    "talk_ratio_agent": 0.72,
+    "silence_seconds": 4.6,
+    "agent_assist_prompts_shown": 3
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "call_id": "C0005",
+  "agent_id": "A02",
+  "campaign": "fixed_tariff_renewal",
+  "direction": "outbound",
+  "start_time": "2026-10-08T09:21:00Z",
+  "end_time": "2026-10-08T09:21:23Z",
+  "duration_seconds": 23,
+  "queue_wait_seconds": 0,
+  "transcription": {
+    "engine_confidence": 0.97,
+    "language": "en-GB",
+    "turns": [
+      {
+        "turn_no": 1,
+        "speaker": "agent",
+        "start_sec": 0.0,
+        "end_sec": 5.8,
+        "text": "Hello, this is A02 calling about your energy plan. Is now a good time?"
+      },
+      {
+        "turn_no": 2,
+        "speaker": "customer",
+        "start_sec": 6.3,
+        "end_sec": 8.3,
+        "text": "Yeah, go on."
+      },
+      {
+        "turn_no": 3,
+        "speaker": "agent",
+        "start_sec": 8.7,
+        "end_sec": 14.4,
+        "text": "Your current rate ends soon and I can offer a new fixed deal today."
+      },
+      {
+        "turn_no": 4,
+        "speaker": "agent",
+        "start_sec": 14.9,
+        "end_sec": 20.7,
+        "text": "Before we go on, I need to read some important information."
+      },
+      {
+        "turn_no": 5,
+        "speaker": "customer",
+        "start_sec": 21.0,
+        "end_sec": 23.3,
+        "text": "Okay, let's do it."
+      }
+    ]
+  },
+  "ccai_analysis": {
+    "overall_sentiment": "positive",
+    "sentiment_score": 0.45,
+    "topics": [
+      "general_enquiry"
+    ],
+    "customer_intent": "likely_to_switch",
+    "compliance_checks": {
+      "cancellation_rights_read": true,
+      "exit_fee_disclosed": true,
+      "call_recording_notice_given": true
+    },
+    "talk_ratio_agent": 0.74,
+    "silence_seconds": 9.7,
+    "agent_assist_prompts_shown": 1
+  }
+}

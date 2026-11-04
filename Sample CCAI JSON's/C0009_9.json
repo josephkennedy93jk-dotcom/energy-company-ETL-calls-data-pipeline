@@ -1,0 +1,111 @@
+{
+  "call_id": "C0009",
+  "agent_id": "A12",
+  "campaign": "winback",
+  "direction": "outbound",
+  "start_time": "2026-10-05T12:18:00Z",
+  "end_time": "2026-10-05T12:18:51Z",
+  "duration_seconds": 51,
+  "queue_wait_seconds": 0,
+  "transcription": {
+    "engine_confidence": 0.85,
+    "language": "en-GB",
+    "turns": [
+      {
+        "turn_no": 1,
+        "speaker": "agent",
+        "start_sec": 0.0,
+        "end_sec": 4.6,
+        "text": "Hello, this is A12 calling about your energy plan. Is now a good time?"
+      },
+      {
+        "turn_no": 2,
+        "speaker": "customer",
+        "start_sec": 5.5,
+        "end_sec": 7.5,
+        "text": "Yeah, go on."
+      },
+      {
+        "turn_no": 3,
+        "speaker": "agent",
+        "start_sec": 8.2,
+        "end_sec": 14.7,
+        "text": "Your current rate ends soon and I can offer a new fixed deal today."
+      },
+      {
+        "turn_no": 4,
+        "speaker": "customer",
+        "start_sec": 15.8,
+        "end_sec": 17.8,
+        "text": "Two years is a long time though."
+      },
+      {
+        "turn_no": 5,
+        "speaker": "agent",
+        "start_sec": 18.5,
+        "end_sec": 23.5,
+        "text": "On your usage, this would keep your unit rate close to what you pay now."
+      },
+      {
+        "turn_no": 6,
+        "speaker": "customer",
+        "start_sec": 23.8,
+        "end_sec": 27.3,
+        "text": "What if I want to leave early?"
+      },
+      {
+        "turn_no": 7,
+        "speaker": "agent",
+        "start_sec": 28.1,
+        "end_sec": 33.0,
+        "text": "On your usage, this would keep your unit rate close to what you pay now."
+      },
+      {
+        "turn_no": 8,
+        "speaker": "customer",
+        "start_sec": 34.0,
+        "end_sec": 36.4,
+        "text": "I need to think about it."
+      },
+      {
+        "turn_no": 9,
+        "speaker": "agent",
+        "start_sec": 37.1,
+        "end_sec": 41.3,
+        "text": "On your usage, this would keep your unit rate close to what you pay now."
+      },
+      {
+        "turn_no": 10,
+        "speaker": "agent",
+        "start_sec": 41.6,
+        "end_sec": 47.5,
+        "text": "Before we go on, I need to read some important information."
+      },
+      {
+        "turn_no": 11,
+        "speaker": "customer",
+        "start_sec": 48.3,
+        "end_sec": 50.5,
+        "text": "I'll leave it for now."
+      }
+    ]
+  },
+  "ccai_analysis": {
+    "overall_sentiment": "negative",
+    "sentiment_score": -0.46,
+    "topics": [
+      "contract_length",
+      "exit_fees",
+      "need_to_think"
+    ],
+    "customer_intent": "unlikely_to_switch",
+    "compliance_checks": {
+      "cancellation_rights_read": true,
+      "exit_fee_disclosed": true,
+      "call_recording_notice_given": true
+    },
+    "talk_ratio_agent": 0.79,
+    "silence_seconds": 0.5,
+    "agent_assist_prompts_shown": 2
+  }
+}

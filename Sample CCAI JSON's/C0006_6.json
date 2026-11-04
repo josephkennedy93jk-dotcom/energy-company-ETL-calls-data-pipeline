@@ -1,0 +1,96 @@
+{
+  "call_id": "C0006",
+  "agent_id": "A02",
+  "campaign": "winback",
+  "direction": "outbound",
+  "start_time": "2026-10-14T13:27:00Z",
+  "end_time": "2026-10-14T13:27:43Z",
+  "duration_seconds": 43,
+  "queue_wait_seconds": 0,
+  "transcription": {
+    "engine_confidence": 0.95,
+    "language": "en-GB",
+    "turns": [
+      {
+        "turn_no": 1,
+        "speaker": "agent",
+        "start_sec": 0.0,
+        "end_sec": 4.2,
+        "text": "Hello, this is A02 calling about your energy plan. Is now a good time?"
+      },
+      {
+        "turn_no": 2,
+        "speaker": "customer",
+        "start_sec": 5.1,
+        "end_sec": 7.1,
+        "text": "Yeah, go on."
+      },
+      {
+        "turn_no": 3,
+        "speaker": "agent",
+        "start_sec": 7.4,
+        "end_sec": 13.4,
+        "text": "Your current rate ends soon and I can offer a new fixed deal today."
+      },
+      {
+        "turn_no": 4,
+        "speaker": "customer",
+        "start_sec": 14.5,
+        "end_sec": 16.5,
+        "text": "I need to think about it."
+      },
+      {
+        "turn_no": 5,
+        "speaker": "agent",
+        "start_sec": 16.9,
+        "end_sec": 22.7,
+        "text": "On your usage, this would keep your unit rate close to what you pay now."
+      },
+      {
+        "turn_no": 6,
+        "speaker": "customer",
+        "start_sec": 23.2,
+        "end_sec": 25.2,
+        "text": "What if I want to leave early?"
+      },
+      {
+        "turn_no": 7,
+        "speaker": "agent",
+        "start_sec": 25.9,
+        "end_sec": 32.7,
+        "text": "On your usage, this would keep your unit rate close to what you pay now."
+      },
+      {
+        "turn_no": 8,
+        "speaker": "agent",
+        "start_sec": 33.0,
+        "end_sec": 38.8,
+        "text": "Before we go on, I need to read some important information."
+      },
+      {
+        "turn_no": 9,
+        "speaker": "customer",
+        "start_sec": 39.2,
+        "end_sec": 42.3,
+        "text": "I'll leave it for now."
+      }
+    ]
+  },
+  "ccai_analysis": {
+    "overall_sentiment": "neutral",
+    "sentiment_score": -0.01,
+    "topics": [
+      "need_to_think",
+      "exit_fees"
+    ],
+    "customer_intent": "unlikely_to_switch",
+    "compliance_checks": {
+      "cancellation_rights_read": true,
+      "exit_fee_disclosed": true,
+      "call_recording_notice_given": true
+    },
+    "talk_ratio_agent": 0.65,
+    "silence_seconds": 2.6,
+    "agent_assist_prompts_shown": 3
+  }
+}
