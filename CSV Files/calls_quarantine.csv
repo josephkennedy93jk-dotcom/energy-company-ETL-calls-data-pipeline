@@ -1,0 +1,1 @@
+source_file,call_id,agent_id,campaign,direction,start_time,end_time,duration_seconds,queue_wait_seconds,engine_confidence,language,n_turns,overall_sentiment,sentiment_score,customer_intent,topics,cancellation_rights_read,exit_fee_disclosed,call_recording_notice_given,talk_ratio_agent,silence_seconds,agent_assist_prompts_shown
